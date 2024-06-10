@@ -95,3 +95,6 @@ Thumbs.db
 include/OpenImageDenoise/config.h
 common/export.linux.map
 common/export.macos.map
+
+# distribution folder
+/dist
