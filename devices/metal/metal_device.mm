@@ -25,7 +25,11 @@ OIDN_NAMESPACE_BEGIN
     @autoreleasepool
     {
       std::vector<Ref<PhysicalDevice>> physicalDevices;
+#ifdef TARGET_OS_IPHONE
+      NSArray* devices = [NSArray arrayWithObject: MTLCreateSystemDefaultDevice()];
+#else
       NSArray* devices = [MTLCopyAllDevices() autorelease];
+#endif
       const int numDevices = static_cast<int>(devices.count);
       for (int deviceID = 0; deviceID < numDevices; ++deviceID)
       {

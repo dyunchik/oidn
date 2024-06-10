@@ -60,9 +60,11 @@ OIDN_NAMESPACE_BEGIN
     case MTLStorageModePrivate:
       this->storage = Storage::Device;
       break;
+#ifndef TARGET_OS_IPHONE
     case MTLStorageModeManaged:
       this->storage = Storage::Managed; // we allow importing managed buffers
       break;
+#endif
     default:
       throw Exception(Error::InvalidArgument, "Metal buffer storage mode is not supported");
     }

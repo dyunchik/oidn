@@ -16,8 +16,10 @@ OIDN_NAMESPACE_BEGIN
       return MTLResourceStorageModeShared | MTLResourceCPUCacheModeDefaultCache;
     case Storage::Device:
       return MTLResourceStorageModePrivate;
+#ifndef TARGET_OS_IPHONE
     case Storage::Managed:
       return MTLResourceStorageModeManaged | MTLResourceCPUCacheModeDefaultCache;
+#endif
     default:
       throw Exception(Error::InvalidArgument, "invalid storage mode");
     }
